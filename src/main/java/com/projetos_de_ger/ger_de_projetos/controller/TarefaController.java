@@ -55,6 +55,18 @@ public class TarefaController {
         return ResponseEntity.ok(tarefasDoProjeto);
     }
 
+    @GetMapping("/projetos/{idProjeto}/tarefas/{nomeTarefa}")
+    public ResponseEntity<List<Tarefa>> listarPorProjetoENome(
+            @PathVariable Long idProjeto,
+            @PathVariable String nomeTarefa) {
+
+        List<Tarefa> tarefas = tarefaService.buscarPorProjetoIdENome(idProjeto, nomeTarefa);
+        if (tarefas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(tarefas);
+    }
+
     @DeleteMapping("/tarefas/{id}")
     public void deletar(@PathVariable Long id) {
         tarefaService.deletar(id);

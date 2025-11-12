@@ -17,5 +17,7 @@ public interface TarefaService {
 
     void deletar(Long id);
 
+    List<Tarefa> buscarPorProjetoIdENome(Long projetoId, String nome);
+
 
 }

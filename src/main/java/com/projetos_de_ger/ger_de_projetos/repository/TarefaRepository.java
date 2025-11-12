@@ -12,5 +12,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
     List<Tarefa> findByProjetoId(Long projetoId);
 
+    List<Tarefa> findByProjetoIdAndDescricaoContainingIgnoreCase(Long projetoId, String descricao);
+
     Long id(Long id);
 }

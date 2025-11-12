@@ -78,6 +78,12 @@ public class TarefaServiceImpl implements TarefaService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Tarefa> buscarPorProjetoIdENome(Long projetoId, String nome) {
+        return tarefaRepository.findByProjetoIdAndDescricaoContainingIgnoreCase(projetoId, nome);
+    }
+
+    @Override
     @Transactional
     public void deletar(Long id) {
         Tarefa tarefaExistente = buscarPorId(id);

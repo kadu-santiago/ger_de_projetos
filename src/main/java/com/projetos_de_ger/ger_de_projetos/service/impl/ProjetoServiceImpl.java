@@ -67,4 +67,10 @@ public class ProjetoServiceImpl implements ProjetoService{
     public void remover(Long id) {
         projetoRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Projeto> buscarPorNome(String nome) {
+        return projetoRepository.findByNomeContainingIgnoreCase(nome);
+    }
 }

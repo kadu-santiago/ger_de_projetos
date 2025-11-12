@@ -16,4 +16,5 @@ public interface ProjetoService {
 
     void remover(Long id);
 
+    List<Projeto> buscarPorNome(String nome);
 }

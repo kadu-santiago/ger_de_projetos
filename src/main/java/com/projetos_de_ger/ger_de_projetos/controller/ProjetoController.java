@@ -24,6 +24,15 @@ public class ProjetoController{
         return projetoService.listarTodos();
     }
 
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<List<Projeto>> buscarPorNome(@PathVariable String nome) {
+        List<Projeto> projetos = projetoService.buscarPorNome(nome);
+        if (projetos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(projetos);
+    }
+
     @PostMapping
     public ResponseEntity<Projeto> salvar(@RequestBody Projeto projeto){
 
